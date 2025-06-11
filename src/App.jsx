@@ -25,11 +25,10 @@ const countries = [
   { name: 'Sweden', code: 'SE' }
 ];
 
-
 function App() {
   const [calendar, setCalendar] = useState([]);
   const [year, setYear] = useState(2025);
-  const [month, setMonth] = useState(1);
+  const [month, setMonth] = useState(6);
   const [countryCode, setCountryCode] = useState('IN');
 
   const loadHolidays = async () => {
@@ -46,55 +45,75 @@ function App() {
   }, [countryCode, year, month]);
 
   return (
-    <div className="container py-4">
-      <h2 className="text-center mb-4">Holiday Calendar</h2>
+    <>
+      {/* Top Navbar with Logo */}
+      <nav className="navbar navbar-light bg-light shadow-sm mb-4">
+        <div className="container">
+          <a className="navbar-brand d-flex align-items-center" href="#">
+            <img
+              src={`${process.env.PUBLIC_URL}/calendar-icon.png`}
+              alt="Logo"
+              width="32"
+              height="32"
+              className="me-2"
+            />
+            <span className="fs-5 fw-bold">Holiday Calendar</span>
+          </a>
+        </div>
+      </nav>
 
-      <div className="row g-3 justify-content-center mb-4">
-        <div className="col-12 col-sm-4 col-md-3">
-          <label className="form-label">Country:</label>
-          <select
-            className="form-select"
-            value={countryCode}
-            onChange={(e) => setCountryCode(e.target.value)}
-          >
-            {countries.map((c) => (
-              <option key={c.code} value={c.code}>
-                {c.name}
-              </option>
-            ))}
-          </select>
+      {/* Main App UI */}
+      <div className="container py-4">
+        <div className="row g-3 justify-content-center mb-4">
+          <div className="col-12 col-sm-4 col-md-3">
+            <label className="form-label">Country:</label>
+            <select
+              className="form-select"
+              value={countryCode}
+              onChange={(e) => setCountryCode(e.target.value)}
+            >
+              {countries.map((c) => (
+                <option key={c.code} value={c.code}>
+                  {c.name}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className="col-6 col-sm-4 col-md-3">
+            <label className="form-label">Year:</label>
+            <select
+              className="form-select"
+              value={year}
+              onChange={(e) => setYear(Number(e.target.value))}
+            >
+              {Array.from({ length: 36 }, (_, i) => 2000 + i).map((y) => (
+                <option key={y} value={y}>
+                  {y}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className="col-6 col-sm-4 col-md-3">
+            <label className="form-label">Month:</label>
+            <select
+              className="form-select"
+              value={month}
+              onChange={(e) => setMonth(Number(e.target.value))}
+            >
+              {Array.from({ length: 12 }, (_, i) => i + 1).map((m) => (
+                <option key={m} value={m}>
+                  {new Date(0, m - 1).toLocaleString('default', { month: 'long' })}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
 
-        <div className="col-6 col-sm-4 col-md-3">
-          <label className="form-label">Year:</label>
-          <select
-            className="form-select"
-            value={year}
-            onChange={(e) => setYear(Number(e.target.value))}
-          >
-            {Array.from({ length: 36 }, (_, i) => 2000 + i).map((y) => (
-              <option key={y} value={y}>
-                {y}
-              </option>
-            ))}
-          </select>
-        </div>
-
-
-        <div className="col-6 col-sm-4 col-md-3">
-          <label className="form-label">Month:</label>
-          <select className="form-select" value={month} onChange={(e) => setMonth(Number(e.target.value))}>
-            {Array.from({ length: 12 }, (_, i) => i + 1).map((m) => (
-              <option key={m} value={m}>
-                {new Date(0, m - 1).toLocaleString('default', { month: 'long' })}
-              </option>
-            ))}
-          </select>
-        </div>
+        <CalendarGrid days={calendar} />
       </div>
-
-      <CalendarGrid days={calendar} />
-    </div>
+    </>
   );
 }
 
