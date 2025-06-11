@@ -10,77 +10,77 @@ const getStartingBlankDays = (days) => {
 };
 
 const groupIntoWeeks = (days) => {
-    const blanks = getStartingBlankDays(days);
-    const paddedDays = Array(blanks).fill(null).concat(days);
-  
-    // Pad the end to ensure each week has exactly 7 items
-    while (paddedDays.length % 7 !== 0) {
-      paddedDays.push(null);
-    }
-  
-    const weeks = [];
-    for (let i = 0; i < paddedDays.length; i += 7) {
-      weeks.push(paddedDays.slice(i, i + 7));
-    }
-  
-    return weeks;
-  };
-  
+  const blanks = getStartingBlankDays(days);
+  const paddedDays = Array(blanks).fill(null).concat(days);
+
+  while (paddedDays.length % 7 !== 0) {
+    paddedDays.push(null);
+  }
+
+  const weeks = [];
+  for (let i = 0; i < paddedDays.length; i += 7) {
+    weeks.push(paddedDays.slice(i, i + 7));
+  }
+
+  return weeks;
+};
 
 const CalendarGrid = ({ days }) => {
   const weeks = groupIntoWeeks(days);
 
   const getWeekColorClass = (week) => {
-    const hasDates = week.some(day => day !== null);
-    if (!hasDates) return ''; // Don't apply any color if week has no dates
+    const hasDates = week.some((day) => day !== null);
+    if (!hasDates) return ''; // No color if no dates
 
-    const holidayCount = week.filter(day => day && day.festivals.length > 0).length;
+    const holidayCount = week.filter((day) => day && day.festivals.length > 0).length;
     if (holidayCount === 1) return 'bg-success-subtle';
     if (holidayCount >= 2) return 'bg-success text-white';
     return 'bg-white';
   };
 
   return (
-    <div className="calendar-container container mt-4">
-      {/* Weekday Labels */}
-      <div className="row text-center fw-bold mb-2">
-        {weekDayLabels.map((day, i) => (
-          <div className="col" key={i}>
-            {day}
-          </div>
-        ))}
-      </div>
+    <div className="container mt-4">
+      <div className="p-3 border rounded shadow bg-white">
+        {/* Weekday Labels */}
+        <div className="calendar-grid mb-3">
+          {weekDayLabels.map((day, i) => (
+            <div key={i} className="weekday-box text-center fw-bold py-2 bg-light border rounded shadow-sm">
+              {day}
+            </div>
+          ))}
+        </div>
 
-      {/* Week Rows */}
-      {weeks.map((week, wIdx) => {
-        const weekColorClass = getWeekColorClass(week);
+        {/* Week Rows */}
+        {weeks.map((week, wIdx) => {
+          const weekColorClass = getWeekColorClass(week);
 
-        return (
-          <div className="row g-2 mb-3" key={wIdx}>
-            {week.map((day, dIdx) => (
-              <div className="col" key={dIdx}>
-                <div
-                  className={`p-2 h-100 rounded-3 shadow ${weekColorClass}`}
-                  style={{ minHeight: '100px' }}
-                >
-                  {day ? (
-                    <>
-                      <div className="fw-bold">{day.day}</div>
-                      {day.festivals.length > 0 && (
-                        <ul className="list-unstyled small mt-2 mb-0">
-                          {day.festivals.map((f, i) => (
-                            <li key={i}>🎉 {f}</li>
-                          ))}
-                        </ul>
-                      )}
-                    </>
-                  ) : null}
+          return (
+            <div className="calendar-grid mb-3" key={wIdx}>
+              {week.map((day, dIdx) => (
+                <div key={dIdx}>
+                  <div
+                    className={`p-2 h-100 rounded-3 shadow ${weekColorClass}`}
+                    style={{ minHeight: '100px' }}
+                  >
+                    {day ? (
+                      <>
+                        <div className="fw-bold">{day.day}</div>
+                        {day.festivals.length > 0 && (
+                          <ul className="list-unstyled small mt-2 mb-0">
+                            {day.festivals.map((f, i) => (
+                              <li key={i}>🎉 {f}</li>
+                            ))}
+                          </ul>
+                        )}
+                      </>
+                    ) : null}
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        );
-      })}
+              ))}
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };
