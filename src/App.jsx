@@ -8,8 +8,23 @@ const countries = [
   { name: 'United States', code: 'US' },
   { name: 'Germany', code: 'DE' },
   { name: 'France', code: 'FR' },
-  // Add more as needed
+  { name: 'Canada', code: 'CA' },
+  { name: 'Australia', code: 'AU' },
+  { name: 'New Zealand', code: 'NZ' },
+  { name: 'Japan', code: 'JP' },
+  { name: 'China', code: 'CN' },
+  { name: 'Brazil', code: 'BR' },
+  { name: 'South Africa', code: 'ZA' },
+  { name: 'Italy', code: 'IT' },
+  { name: 'Spain', code: 'ES' },
+  { name: 'Russia', code: 'RU' },
+  { name: 'Mexico', code: 'MX' },
+  { name: 'Singapore', code: 'SG' },
+  { name: 'United Arab Emirates', code: 'AE' },
+  { name: 'Netherlands', code: 'NL' },
+  { name: 'Sweden', code: 'SE' }
 ];
+
 
 function App() {
   const [calendar, setCalendar] = useState([]);
@@ -31,13 +46,14 @@ function App() {
   }, [countryCode, year, month]);
 
   return (
-    <div style={{ textAlign: 'center', padding: '20px' }}>
-      <h2>Holiday Calendar</h2>
+    <div className="container py-4">
+      <h2 className="text-center mb-4">Holiday Calendar</h2>
 
-      <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', marginBottom: '20px' }}>
-        <div>
-          <label>Country: </label>
+      <div className="row g-3 justify-content-center mb-4">
+        <div className="col-12 col-sm-4 col-md-3">
+          <label className="form-label">Country:</label>
           <select
+            className="form-select"
             value={countryCode}
             onChange={(e) => setCountryCode(e.target.value)}
           >
@@ -49,10 +65,14 @@ function App() {
           </select>
         </div>
 
-        <div>
-          <label>Year: </label>
-          <select value={year} onChange={(e) => setYear(Number(e.target.value))}>
-            {[2023, 2024, 2025, 2026].map((y) => (
+        <div className="col-6 col-sm-4 col-md-3">
+          <label className="form-label">Year:</label>
+          <select
+            className="form-select"
+            value={year}
+            onChange={(e) => setYear(Number(e.target.value))}
+          >
+            {Array.from({ length: 36 }, (_, i) => 2000 + i).map((y) => (
               <option key={y} value={y}>
                 {y}
               </option>
@@ -60,9 +80,10 @@ function App() {
           </select>
         </div>
 
-        <div>
-          <label>Month: </label>
-          <select value={month} onChange={(e) => setMonth(Number(e.target.value))}>
+
+        <div className="col-6 col-sm-4 col-md-3">
+          <label className="form-label">Month:</label>
+          <select className="form-select" value={month} onChange={(e) => setMonth(Number(e.target.value))}>
             {Array.from({ length: 12 }, (_, i) => i + 1).map((m) => (
               <option key={m} value={m}>
                 {new Date(0, m - 1).toLocaleString('default', { month: 'long' })}
