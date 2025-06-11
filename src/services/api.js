@@ -1,7 +1,7 @@
 // src/services/api.js
 import axios from 'axios';
 
-const API_BASE = 'http://localhost:8080/calendar';
+const API_BASE = 'https://backend-calendar-app-production-66bc.up.railway.app/calendar';
 
 export const fetchHolidays = async (country, year, month) => {
   const payload = {
