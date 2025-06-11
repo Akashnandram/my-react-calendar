@@ -1,19 +1,25 @@
-// src/App.jsx
-
-// src/App.jsx
 import React, { useState, useEffect } from 'react';
 import CalendarGrid from './components/CalendarGrid';
 import { fetchHolidays } from './services/api';
 
-const App = () => {
+const countries = [
+  { name: 'India', code: 'IN' },
+  { name: 'United Kingdom', code: 'UK' },
+  { name: 'United States', code: 'US' },
+  { name: 'Germany', code: 'DE' },
+  { name: 'France', code: 'FR' },
+  // Add more as needed
+];
+
+function App() {
   const [calendar, setCalendar] = useState([]);
   const [year, setYear] = useState(2025);
   const [month, setMonth] = useState(1);
-  const [country, setCountry] = useState('IN');
+  const [countryCode, setCountryCode] = useState('IN');
 
   const loadHolidays = async () => {
     try {
-      const data = await fetchHolidays(country, year, month);
+      const data = await fetchHolidays(countryCode, year, month);
       setCalendar(data);
     } catch (err) {
       console.error('Error fetching holidays:', err);
@@ -22,84 +28,53 @@ const App = () => {
 
   useEffect(() => {
     loadHolidays();
-  }, [country, year, month]);
-
-  const years = Array.from({ length: 11 }, (_, i) => 2020 + i);
-  const months = [
-    { value: 1, name: 'January' },
-    { value: 2, name: 'February' },
-    { value: 3, name: 'March' },
-    { value: 4, name: 'April' },
-    { value: 5, name: 'May' },
-    { value: 6, name: 'June' },
-    { value: 7, name: 'July' },
-    { value: 8, name: 'August' },
-    { value: 9, name: 'September' },
-    { value: 10, name: 'October' },
-    { value: 11, name: 'November' },
-    { value: 12, name: 'December' },
-  ];
-  const countries = ['IN', 'US', 'UK', 'DE', 'FR', 'JP'];
+  }, [countryCode, year, month]);
 
   return (
-    <div style={{ padding: '20px', textAlign: 'center' }}>
+    <div style={{ textAlign: 'center', padding: '20px' }}>
       <h2>Holiday Calendar</h2>
-  
-      <div
-        style={{
-          display: 'inline-flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          gap: '20px',
-          marginBottom: '20px',
-          flexWrap: 'wrap'
-        }}
-      >
-        <label>
-          Country:
+
+      <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', marginBottom: '20px' }}>
+        <div>
+          <label>Country: </label>
           <select
-            value={country}
-            onChange={(e) => setCountry(e.target.value)}
-            style={{ marginLeft: '8px', padding: '4px' }}
+            value={countryCode}
+            onChange={(e) => setCountryCode(e.target.value)}
           >
             {countries.map((c) => (
-              <option key={c} value={c}>{c}</option>
+              <option key={c.code} value={c.code}>
+                {c.name}
+              </option>
             ))}
           </select>
-        </label>
-  
-        <label>
-          Year:
-          <select
-            value={year}
-            onChange={(e) => setYear(Number(e.target.value))}
-            style={{ marginLeft: '8px', padding: '4px' }}
-          >
-            {years.map((y) => (
-              <option key={y} value={y}>{y}</option>
+        </div>
+
+        <div>
+          <label>Year: </label>
+          <select value={year} onChange={(e) => setYear(Number(e.target.value))}>
+            {[2023, 2024, 2025, 2026].map((y) => (
+              <option key={y} value={y}>
+                {y}
+              </option>
             ))}
           </select>
-        </label>
-  
-        <label>
-          Month:
-          <select
-            value={month}
-            onChange={(e) => setMonth(Number(e.target.value))}
-            style={{ marginLeft: '8px', padding: '4px' }}
-          >
-            {months.map((m) => (
-              <option key={m.value} value={m.value}>{m.name}</option>
+        </div>
+
+        <div>
+          <label>Month: </label>
+          <select value={month} onChange={(e) => setMonth(Number(e.target.value))}>
+            {Array.from({ length: 12 }, (_, i) => i + 1).map((m) => (
+              <option key={m} value={m}>
+                {new Date(0, m - 1).toLocaleString('default', { month: 'long' })}
+              </option>
             ))}
           </select>
-        </label>
+        </div>
       </div>
-  
+
       <CalendarGrid days={calendar} />
     </div>
   );
-  
-};
+}
 
 export default App;
-

@@ -3,14 +3,12 @@ import './CalendarGrid.css';
 
 const weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
-// Helper to get the first weekday of the month
 const getStartingBlankDays = (days) => {
     if (days.length === 0) return 0;
     const firstDay = new Date(days[0].year, days[0].month - 1, days[0].day);
-    return firstDay.getDay(); // 0 = Sunday
+    return firstDay.getDay();
 };
 
-// Group days into weeks with empty placeholders at the start
 const groupIntoWeeks = (days) => {
     const blanks = getStartingBlankDays(days);
     const paddedDays = Array(blanks).fill(null).concat(days);
@@ -55,7 +53,7 @@ const CalendarGrid = ({ days }) => {
                             >
                                 {day ? (
                                     <>
-                                        <div className="day-number">{day.day}</div> {/* <-- Wrap this */}
+                                        <div className="day-number">{day.day}</div> {}
                                         {day.festivals.length > 0 && (
                                             <ul className="festival-list">
                                                 {day.festivals.map((f, i) => (

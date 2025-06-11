@@ -4,9 +4,9 @@
   .weekdays-row {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    background-color: #e0f7ff; /* light blue */
+    background-color: #e0f7ff; 
     padding: 10px;
-    font-size: 1.6rem; /* increased font size */
+    font-size: 1.6rem;
     font-weight: bold;
     border-radius: 8px;
     text-align: center;
@@ -34,7 +34,7 @@
     background-color: #f4f4f4;
   }
   .day-number {
-    font-size: 2rem; /* Larger than the default */
+    font-size: 2rem; 
     font-weight: bold;
   }
   
