@@ -2,75 +2,100 @@
   margin-bottom: 2rem;
 }
 
-  .weekdays-row {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    background-color: #e0f7ff; 
-    padding: 10px;
-    font-size: 1.6rem;
-    font-weight: bold;
-    border-radius: 8px;
-    text-align: center;
-    margin: 10px 0;
-  }
-  
-  .weekday-cell {
-    padding: 10px 0;
-    font-size: 1.5rem;
-  }
-  
-  
-  .calendar-grid {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    margin-top: 10px;
-    gap: 10px;
-  }
-  
-  .day-box {
-    padding: 30px;
-    border-radius: 8px;
-    text-align: center;
-    min-height: 100px;
-    background-color: #4a3b3b;
-  }
-  .day-number {
-    font-size: 2rem; 
-    font-weight: bold;
-  }
-  
-  
-  .day-box.grey {
-    background-color: #e0e0e0;
-  }
-  
-  .day-box.light-green {
-    background-color: #c8f7c5;
-  }
-  
-  .day-box.dark-green {
-    background-color: #4caf50;
-    color: white;
-  }
-  
-  .festival-list {
-    list-style-type: none;
-    padding: 0;
-    font-size: 0.8rem;
-    margin-top: 5px;
-  }
-  .calendar-container .col {
-    padding-left: 4px;
-    padding-right: 4px;
-  }
-  .calendar-grid {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 10px;
-  }
-  
-  .weekday-box {
-    font-size: 0.95rem;
-    text-align: center;
-  }
-  
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+  width: 100%;
+}
+
+.weekdays-row {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  background-color: #e0f7ff;
+  padding: 10px;
+  font-size: 1.6rem;
+  font-weight: bold;
+  border-radius: 8px;
+  text-align: center;
+  margin: 10px 0;
+}
+
+.weekday-cell {
+  padding: 10px 0;
+  font-size: 1.5rem;
+}
+
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  margin-top: 10px;
+  gap: 10px;
+}
+
+.day-box {
+  padding: 30px;
+  border-radius: 8px;
+  text-align: center;
+  min-height: 100px;
+  background-color: #4a3b3b;
+}
+
+.day-number {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+
+.day-box.grey {
+  background-color: #e0e0e0;
+}
+
+.day-box.light-green {
+  background-color: #c8f7c5;
+}
+
+.day-box.dark-green {
+  background-color: #4caf50;
+  color: white;
+}
+
+.festival-list {
+  list-style-type: none;
+  padding: 0;
+  font-size: 0.8rem;
+  margin-top: 5px;
+}
+
+.calendar-container .col {
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+}
+
+.weekday-box {
+  font-size: 0.95rem;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.calendar-wrapper {
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+.calendar-cell {
+  min-height: 100px;
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  word-wrap: break-word;
+}

@@ -29,10 +29,10 @@ const CalendarGrid = ({ days }) => {
   const weeks = groupIntoWeeks(days);
 
   const getWeekColorClass = (week) => {
-    const hasDates = week.some((day) => day !== null);
+    const hasDates = week.some(day => day !== null);
     if (!hasDates) return ''; // No color if no dates
 
-    const holidayCount = week.filter((day) => day && day.festivals.length > 0).length;
+    const holidayCount = week.filter(day => day && day.festivals.length > 0).length;
     if (holidayCount === 1) return 'bg-success-subtle';
     if (holidayCount >= 2) return 'bg-success text-white';
     return 'bg-white';
@@ -40,7 +40,7 @@ const CalendarGrid = ({ days }) => {
 
   return (
     <div className="container mt-4">
-      <div className="p-3 border rounded shadow bg-white">
+      <div className="p-3 border rounded shadow bg-white calendar-wrapper">
         {/* Weekday Labels */}
         <div className="calendar-grid mb-3">
           {weekDayLabels.map((day, i) => (
@@ -58,10 +58,7 @@ const CalendarGrid = ({ days }) => {
             <div className="calendar-grid mb-3" key={wIdx}>
               {week.map((day, dIdx) => (
                 <div key={dIdx}>
-                  <div
-                    className={`p-2 h-100 rounded-3 shadow ${weekColorClass}`}
-                    style={{ minHeight: '100px' }}
-                  >
+                  <div className={`p-2 rounded-3 shadow calendar-cell ${weekColorClass}`}>
                     {day ? (
                       <>
                         <div className="fw-bold">{day.day}</div>
