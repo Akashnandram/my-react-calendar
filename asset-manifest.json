@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Akashnandram/my-react-calendar/static/css/main.618cc66a.css",
-    "main.js": "/Akashnandram/my-react-calendar/static/js/main.ee8a5a40.js",
-    "static/js/453.92edabac.chunk.js": "/Akashnandram/my-react-calendar/static/js/453.92edabac.chunk.js",
-    "index.html": "/Akashnandram/my-react-calendar/index.html",
-    "main.618cc66a.css.map": "/Akashnandram/my-react-calendar/static/css/main.618cc66a.css.map",
-    "main.ee8a5a40.js.map": "/Akashnandram/my-react-calendar/static/js/main.ee8a5a40.js.map",
-    "453.92edabac.chunk.js.map": "/Akashnandram/my-react-calendar/static/js/453.92edabac.chunk.js.map"
+    "main.css": "/my-react-calendar/static/css/main.618cc66a.css",
+    "main.js": "/my-react-calendar/static/js/main.f6f31762.js",
+    "static/js/453.92edabac.chunk.js": "/my-react-calendar/static/js/453.92edabac.chunk.js",
+    "index.html": "/my-react-calendar/index.html",
+    "main.618cc66a.css.map": "/my-react-calendar/static/css/main.618cc66a.css.map",
+    "main.f6f31762.js.map": "/my-react-calendar/static/js/main.f6f31762.js.map",
+    "453.92edabac.chunk.js.map": "/my-react-calendar/static/js/453.92edabac.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.618cc66a.css",
-    "static/js/main.ee8a5a40.js"
+    "static/js/main.f6f31762.js"
   ]
 }
