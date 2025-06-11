@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Akashnandram/my-react-calendar/static/css/main.618cc66a.css",
+    "main.js": "/Akashnandram/my-react-calendar/static/js/main.848094ec.js",
+    "static/js/453.92edabac.chunk.js": "/Akashnandram/my-react-calendar/static/js/453.92edabac.chunk.js",
+    "index.html": "/Akashnandram/my-react-calendar/index.html",
+    "main.618cc66a.css.map": "/Akashnandram/my-react-calendar/static/css/main.618cc66a.css.map",
+    "main.848094ec.js.map": "/Akashnandram/my-react-calendar/static/js/main.848094ec.js.map",
+    "453.92edabac.chunk.js.map": "/Akashnandram/my-react-calendar/static/js/453.92edabac.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.618cc66a.css",
+    "static/js/main.848094ec.js"
+  ]
+}
