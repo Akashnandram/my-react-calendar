@@ -10,16 +10,22 @@ const getStartingBlankDays = (days) => {
 };
 
 const groupIntoWeeks = (days) => {
-  const blanks = getStartingBlankDays(days);
-  const paddedDays = Array(blanks).fill(null).concat(days);
-
-  const weeks = [];
-  for (let i = 0; i < paddedDays.length; i += 7) {
-    weeks.push(paddedDays.slice(i, i + 7));
-  }
-
-  return weeks;
-};
+    const blanks = getStartingBlankDays(days);
+    const paddedDays = Array(blanks).fill(null).concat(days);
+  
+    // Pad the end to ensure each week has exactly 7 items
+    while (paddedDays.length % 7 !== 0) {
+      paddedDays.push(null);
+    }
+  
+    const weeks = [];
+    for (let i = 0; i < paddedDays.length; i += 7) {
+      weeks.push(paddedDays.slice(i, i + 7));
+    }
+  
+    return weeks;
+  };
+  
 
 const CalendarGrid = ({ days }) => {
   const weeks = groupIntoWeeks(days);
