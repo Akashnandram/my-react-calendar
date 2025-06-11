@@ -2,7 +2,7 @@
   "name": "holiday-calendar",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://github.com/Akashnandram/my-react-calendar",
+  "homepage": "https://akashnandram.github.io/my-react-calendar",
   "dependencies": {
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
